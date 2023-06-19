@@ -15,6 +15,8 @@ void printGraph(Graph *G);
 int main(){
     int v1 = 0, v2 = 0, value = 0;
     Graph *G = (Graph *)malloc(sizeof(Graph));
+    printf("Escreva o numero de vertices e arestas: "); scanf("%d%d",&G->V, &G->A);
+    G->Adj = (int **)malloc(sizeof(int *)*G->V);
 
     initGraph(G);
     addArestas(G, v1, v2, value, G->A);
@@ -37,14 +39,13 @@ Graph *addArestas(Graph *G, int v1, int v2, int value, int size){
 }
 
 Graph initGraph(Graph *G){
-    printf("Escreva o numero de vertices e arestas: "); scanf("%d%d",&G->V, &G->A);
     G->Adj = (int **)malloc(sizeof(int *)*G->V);
     for(int i = 0; i < G->V; i++){
         G->Adj[i] = (int *)malloc(sizeof(int)*G->V);
     }
-    for(int i = 0; i < G->V; i++){
-        for(int j = 0; j < G->V; j++){
-            G->Adj[i][j] = 0;
+    for(int u = 0; u < G->V; u++){
+        for(int v = 0; v < G->V; v++){
+            G->Adj[u][v] = 0;
         }
     }
     return *G;
@@ -54,12 +55,19 @@ void printGraph(Graph *G){
     printf("Matriz de adjacencia: \n");
     for(int i = 0; i < G->V; i++){
         for(int j = 0; j < G->V; j++){
-            printf("%d \t", G->Adj[i][j]);
+            printf("%d ", G->Adj[i][j]);
         }
         printf("\n");
     }
 }
 
+void freeGraph(Graph *G){
+    for(int i = 0; i < G->V; i++){
+        free(G->Adj[i]);
+    }
+    free(G->Adj);
+    free(G);
+}
 void freeGraph(Graph *G){
     for(int i = 0; i < G->V; i++){
         free(G->Adj[i]);
