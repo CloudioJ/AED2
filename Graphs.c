@@ -54,7 +54,7 @@ void printGraph(Graph *G){
     printf("Matriz de adjacencia: \n");
     for(int i = 0; i < G->V; i++){
         for(int j = 0; j < G->V; j++){
-            printf("%d\t", G->Adj[i][j]);
+            printf("%d \t", G->Adj[i][j]);
         }
         printf("\n");
     }
