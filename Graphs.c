@@ -42,9 +42,9 @@ Graph initGraph(Graph *G){
     for(int i = 0; i < G->V; i++){
         G->Adj[i] = (int *)malloc(sizeof(int)*G->V);
     }
-    for(int u = 0; u < G->V; u++){
-        for(int v = 0; v < G->V; v++){
-            G->Adj[u][v] = 0;
+    for(int i = 0; i < G->V; i++){
+        for(int j = 0; j < G->V; j++){
+            G->Adj[i][j] = 0;
         }
     }
     return *G;
