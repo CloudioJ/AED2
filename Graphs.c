@@ -68,10 +68,3 @@ void freeGraph(Graph *G){
     free(G->Adj);
     free(G);
 }
-void freeGraph(Graph *G){
-    for(int i = 0; i < G->V; i++){
-        free(G->Adj[i]);
-    }
-    free(G->Adj);
-    free(G);
-}
