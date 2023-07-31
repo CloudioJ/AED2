@@ -40,18 +40,50 @@ void Union(Subset subsets[], int x, int y);
 
 int main() {
     // Inicializa os valores do grafo
-    int v1 = 0, v2 = 0, value = 0;
+    // int v1 = 0, v2 = 0, value = 0;
     Graph *G = (Graph *)malloc(sizeof(Graph));
 
     // Recebe o numero de vertices e arestas
     printf("Escreva o numero de vertices e arestas: ");
-    scanf("%d%d", &G->V, &G->A);
+    // scanf("%d%d", &G->V, &G->A);
+    G->V = 9;
+    G->A = 14;
     G->Adj = (int **)malloc(sizeof(int *) * G->V);
 
     // Inicializa o grafo
     initGraph(G);
     // Adiciona as arestas
-    addArestas(G, v1, v2, value, G->A);
+    // addArestas(G, v1, v2, value, G->A);
+
+    G->Adj[0][1] = 4;
+    G->Adj[0][7] = 8;
+    G->Adj[1][2] = 8;
+    G->Adj[1][7] = 11;
+    G->Adj[2][3] = 7;
+    G->Adj[2][8] = 2;
+    G->Adj[2][5] = 4;
+    G->Adj[3][4] = 9;
+    G->Adj[3][5] = 14;
+    G->Adj[4][5] = 10;
+    G->Adj[5][6] = 2;
+    G->Adj[6][7] = 1;
+    G->Adj[6][8] = 6;
+    G->Adj[7][8] = 7;
+    G->Adj[1][0] = 4;
+    G->Adj[7][0] = 8;
+    G->Adj[2][1] = 8;
+    G->Adj[7][1] = 11;
+    G->Adj[3][2] = 7;
+    G->Adj[8][2] = 2;
+    G->Adj[5][2] = 4;
+    G->Adj[4][3] = 9;
+    G->Adj[5][3] = 14;
+    G->Adj[5][4] = 10;
+    G->Adj[6][5] = 2;
+    G->Adj[7][6] = 1;
+    G->Adj[8][6] = 6;
+    G->Adj[8][7] = 7;
+
     // Printa a matriz de adjacencia
     printGraph(G);
 
@@ -97,7 +129,7 @@ void printGraph(Graph *G) {
     printf("Matriz de adjacencia: \n");
     for (int i = 0; i < G->V; i++) {
         for (int j = 0; j < G->V; j++) {
-            printf("%d ", G->Adj[i][j]);
+            printf("%d\t", G->Adj[i][j]);
         }
         printf("\n");
     }
@@ -164,9 +196,9 @@ void kruskal(Graph *G) {
         }
     }
     // Printa a MST
-    printf("\nMinimum Spanning Tree:\n");
+    printf("\nMinimum Spanning Tree (MST) usando Kruskal:\n");
     for (int i = 0; i < mstCount; i++) {
-        printf("%d - %d : %d\n", mst[i].src, mst[i].dest, mst[i].weight);
+        printf("(%d, %d)%d\n", mst[i].src, mst[i].dest, mst[i].weight);
     }
 
     // Libera a memoria alocada

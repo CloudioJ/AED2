@@ -1,3 +1,10 @@
+/*
+Autores: 
+
+Claudio Luis da Silva Machado Junior - 19200320
+Marcelo Pereira Vargas Rodrigues - 19100322
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
@@ -113,7 +120,7 @@ void printGraph(Graph *G){
     printf("Matriz de adjacencia: \n");
     for(int i = 0; i < G->V; i++){
         for(int j = 0; j < G->V; j++){
-            printf("\t%d", G->Adj[i][j]);
+            printf("%d\t", G->Adj[i][j]);
         }
         printf("\n");
     }
@@ -157,7 +164,7 @@ void prim(Graph *G, int src){
     parent[src] = -1; 
 
     // O algoritmo roda V vezes
-    for(int count = 0; count < G->V - 1; count++){
+    for(int c = 0; c < G->V - 1; c++){
         int u = findMinKey(key, mstSet, G->V); // Escolhe o valor de key minimo do vertice que não está na MST
         mstSet[u] = 1; // Adiciona o vertice escolhido na MST
 
@@ -174,7 +181,7 @@ void prim(Graph *G, int src){
     printf("\nMinimum Spanning Tree (MST) usando Prim com a origem em %d:\n", src);
     for(int i = 0; i < G->V; i++){
         if (i != src) {
-            printf("%d - %d: %d\n", parent[i], i, G->Adj[i][parent[i]]);
+            printf("(%d, %d) %d\n", parent[i], i, G->Adj[i][parent[i]]);
         }
     }
 }

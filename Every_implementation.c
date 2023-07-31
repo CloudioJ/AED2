@@ -304,7 +304,7 @@ void prim(Graph *G, int src){
     key[src] = 0;
     parent[src] = -1;
 
-    for (int count=0; count<G->V-1; count++){
+    for (int c = 0; c < G->V - 1; c++){
         int u = minKey(G, key, mstSet);
         mstSet[u] = 1;
 
