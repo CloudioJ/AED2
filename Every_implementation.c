@@ -150,8 +150,6 @@ void connect(Graph *G){
     // }
 
     // Hard coded graph
-    G->V = 9;
-    G->E = 14;
 
     G->Adj[0][1] = 4;
     G->Adj[0][7] = 8;
